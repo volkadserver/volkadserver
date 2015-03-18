@@ -1,0 +1,26 @@
+{
+  "name": "volkadserver",
+  "version": "1.0.0",
+  "description": "An IAB compliant open-source ad server for publishers",
+  "main": "main.js",
+  "dependencies": {
+    "koa": "^0.18.1",
+    "koa-favicon": "^1.2.0",
+    "useragent": "^2.1.5",
+    "lodash": "^3.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/volkadserver/volkadserver.git"
+  },
+  "author": "Nathan Hagen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/volkadserver/volkadserver/issues"
+  },
+  "homepage": "https://github.com/volkadserver/volkadserver"
+}
