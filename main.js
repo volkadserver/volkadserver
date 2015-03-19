@@ -1,31 +1,31 @@
 var koa = require('koa');
+var favi = require('koa-favicon');
 var _ = require('lodash');
 var ua = require('useragent');
+var rt = require('koa-response-time');
 
 var app = koa();
-var flights = [
-  { 
-    flightName: 'test',
-    family: 'Chrome',
+var criteria =  {
+  name: 'lol',
+  os: 'mac',
+  randOthrThng:434
+};
+var flight = _.clone(criteria);
+flight.url = 'lol';
+var flights = [];
 
-    creatives: [
-      { creativeName: 'creativetest', creativeContent: 'testcontent' }
-    ]
-  }
-];
+for(var i = 0; i < 10000; i++) {
+  flights.push({});
+}
+flights.push(flight);
+
+app.use(rt()); 
+app.use(favi()); 
 
 
 app.use(function *() {
-  var start = new Date();
-  var criteria = 
-    _.pick(ua.parse(this.request.headers['user-agent']), 'family');
-  var res = _.find(flights, criteria);
-  if(res && res.creatives && res.creatives[0])
-    this.body = res.creatives[0].creativeContent;
-  else
-    this.body = 'House ad';
-  var end = new Date() - start;
-  console.log('took: ', end);
+  var res = _.findWhere(flights, criteria);
+  this.body = JSON.stringify(res, null, 2);
 });
 
 app.listen(8081);

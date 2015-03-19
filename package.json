@@ -6,8 +6,9 @@
   "dependencies": {
     "koa": "^0.18.1",
     "koa-favicon": "^1.2.0",
-    "useragent": "^2.1.5",
-    "lodash": "^3.5.0"
+    "koa-response-time": "^1.0.2",
+    "lodash": "^3.5.0",
+    "useragent": "^2.1.5"
   },
   "devDependencies": {},
   "scripts": {
