@@ -8,14 +8,22 @@ var app = koa();
 var criteria =  {
   name: 'lol',
   os: 'mac',
-  randOthrThng:434
+  randOthrThng:50
 };
 var flight = _.clone(criteria);
 flight.url = 'lol';
 var flights = [];
 
-for(var i = 0; i < 10000; i++) {
-  flights.push({});
+for(var i = 0; i < 1000000; i++) {
+  var oss = ['mac', 'pc'];
+  var name = Math.random().toString(32);
+
+  flights.push({
+    os: oss[Math.round(Math.random())],
+    name: Math.random().toString(32),
+    randOthrThng: Math.floor(Math.random()*100),
+    url: 'http://lol/;'
+  });
 }
 flights.push(flight);
 
@@ -24,8 +32,9 @@ app.use(favi());
 
 
 app.use(function *() {
-  var res = _.findWhere(flights, criteria);
-  this.body = JSON.stringify(res, null, 2);
+  var res = _.where(flights, { os: 'pc', randOthrThng: 50});
+  this.body = JSON.stringify(res.length, null, 2);
+
 });
 
 app.listen(8081);
